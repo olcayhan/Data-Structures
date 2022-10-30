@@ -100,6 +100,6 @@ Finally, we generate main function, we create a new LinkedList object namely lis
 ![image](https://user-images.githubusercontent.com/71206063/198894036-d935eefc-96c8-4f35-be39-c0f23c9c0232.png)
 
  
-We call removeAllItems() function:
+### We call removeAllItems() function:
 
   This function removes all items in the array, so 5 is deleted in the array and the list is cleared.
