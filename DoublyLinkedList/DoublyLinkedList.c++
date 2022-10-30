@@ -135,7 +135,7 @@ public:
 
   void removeAllItems()
   {
-    Node *  = tail;
+    Node *temp = tail;
 
     while (temp != NULL)
     {
