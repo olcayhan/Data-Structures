@@ -9,13 +9,13 @@ public:
     Node *next;
 };
 
-class LinkedList
+class stackImplement
 {
     Node *head;
     Node *top;
 
 public:
-    LinkedList()
+    stackImplement()
     {
 
         head = NULL;
@@ -60,26 +60,17 @@ public:
         }
     }
 
-    void getTop()
+    int getTop()
     {
         Node *temp = top;
         if (temp != NULL)
         {
-            cout << "top element of stack : " << temp->data << endl;
+            return temp->data;
         }
+        return 0;
     }
 
-    void printAll()
-    {
-        Node *temp = head;
-
-        while (temp != NULL)
-        {
-            cout << temp->data << endl;
-            temp = temp->next;
-        }
-    }
-    void size()
+    int size()
     {
         Node *temp = head;
         int counter = 0;
@@ -89,41 +80,33 @@ public:
             temp = temp->next;
         }
 
-        if (temp != NULL)
-        {
-            cout << "size of stack : " << counter << endl;
-        }
-        else
-        {
-            cout << "stack is empty" << endl;
-        }
+        return counter;
     }
-    void isEmpty()
+    bool isEmpty()
     {
         if (top == NULL)
         {
-            cout << "True" << endl;
+            return true;
         }
         else
         {
-            cout << "False" << endl;
+            return false;
         }
     }
 };
 
 int main()
 {
-    LinkedList *list = new LinkedList();
-    list->push(10);
-    list->push(15);
-    list->push(17);
-    list->pop();
-    list->pop();
-    list->pop();
+    stackImplement *stackList = new stackImplement();
+    stackList->push(10);
+    stackList->push(15);
+    stackList->push(17);
+    stackList->pop();
+    stackList->pop();
+    stackList->pop();
 
-    list->getTop();
-    // list->printAll();
-    list->size();
-    list->isEmpty();
+    cout << stackList->getTop() << endl;
+    cout << stackList->size() << endl;
+    cout << stackList->isEmpty() << endl;
     return 0;
 };
