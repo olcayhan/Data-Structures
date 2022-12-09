@@ -59,9 +59,14 @@ public:
         }
     }
 
+    int getFront() // front data of the queue
+    {
+        return front != NULL ? front->data : -1; // this method is integer because of that if front is NULL then return -1
+    }
+
     int size()
     {
-        Node *temp = tail;
+        Node *temp = tail; // size of the queue
         int counter = 0;
         while (temp != NULL)
         {
@@ -72,7 +77,7 @@ public:
         return counter;
     }
 
-    bool isEmpty()
+    bool isEmpty() // true if the queue is empty
     {
         if (front == NULL)
         {
@@ -81,40 +86,28 @@ public:
         return false;
     }
 
-    int getFront()
+    void print() // print the queue
     {
-        return front != NULL ? front->data : -1; // this method is integer because of that if front is NULL then return -1
-    }
+        Node *temp = tail; // temp node that is indicate tail node
 
-    int getTail()
-    {
-        return tail != NULL ? tail->data : -1; // this method is integer because of that if front is NULL then return -1
-    }
-
-    void print()
-    {
-        Node *temp = tail;
-
-        cout << "\t[ ";
+        cout << "\t[ "; // some styling :)
         while (temp != NULL)
         {
             cout << temp->data << " ";
             temp = temp->next;
         }
-        cout << "]" << endl;
+        cout << "]" << endl; // some styling :)
     }
 
-    int findMaxValue()
+    int findMaxValue() // returns the maximum value int the queue
     {
-        Node *temp = tail;
 
         int max = -2147483648; // user may enter the integer less than 0
-        while (temp != NULL)
+        while (!isEmpty())
         {
-            if (max <= temp->data)
-                max = temp->data;
-
-            temp = temp->next;
+            if (max < getFront()) // check if the front is bigger than the max
+                max = getFront();
+            dequeue(); // dequeue for the next front item
         }
         return max;
     }
@@ -122,25 +115,25 @@ public:
 
 int main()
 {
-    Queue *queueList = new Queue();
+    Queue *queueList = new Queue(); // queueList for the queue.
 
-    queueList->enqueue(25); //
-    queueList->enqueue(12); //
-    queueList->enqueue(14); //
+    queueList->enqueue(25); 
+    queueList->enqueue(12); 
+    queueList->enqueue(14); 
     queueList->enqueue(5);  //   tail             front
     queueList->enqueue(7);  //    |                 |
     queueList->enqueue(18); // [ 18  7  5  14  12  25 ]
 
-    cout << "=============== Queue Implement =================\n"
-         << endl;
-    queueList->print();
-    cout << "\tFront value : " << queueList->getFront() << endl;
-    cout << "\tTail value : " << queueList->getTail() << endl;
-    cout << "\tSize of Queue : " << queueList->size() << endl;
-    queueList->isEmpty() ? cout << "\tQueue is Empty" << endl : cout << "\tQueue is Not Empty" << endl;
-
-    cout << "\tMax Value of Queue : " << queueList->findMaxValue() << endl;
-    cout << "\n=================================================" << endl;
+    cout << "=============== Queue Implement =================\n" << endl; //some styling :)
+    queueList->print(); // print queue
+    cout << "\tFront value : " << queueList->getFront() << endl; // get front value from queue
+    cout << "\tSize of Queue : " << queueList->size() << endl;  // get size of queue
+    queueList->isEmpty() ? cout << "\tQueue is Empty" << endl : cout << "\tQueue is Not Empty" << endl; // check queue is empty
+    cout << "\tMax Value of Queue : " << queueList->findMaxValue() << endl; // get max value from queue
+    cout << "\n=================================================" << endl; //some styling :)
+    cout << "Created-By-OlcayHanK"<<endl;
+    cout << "https://github.com/olcayhan" <<endl;
+    cout << "=================================================" << endl; //some styling :)
 
     return 0;
 };
