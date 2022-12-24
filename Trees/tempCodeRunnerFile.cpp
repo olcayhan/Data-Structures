@@ -1,0 +1,2 @@
+ht = NULL;
+        // left = NULL;
